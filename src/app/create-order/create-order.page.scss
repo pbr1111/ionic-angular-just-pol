@@ -1,0 +1,30 @@
+app-create-order {
+	.product-item {
+		.button-no-text {
+			width: 36px;
+			--padding-start: 0;
+			--padding-end: 0;
+		}
+
+		.quantity {
+			min-width: 60px;
+			text-align: center;
+		}
+	}
+
+	.create-order {
+		.shopping-cart-col {
+			max-width: 35px;
+
+			#shopping-cart {
+				width: 23px;
+			}
+		}
+
+		#add-circle,
+		#remove-circle {
+			visibility: hidden;
+			position: absolute;
+		}
+	}
+}

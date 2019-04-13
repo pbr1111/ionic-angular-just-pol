@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'createOrder' | locale}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div *ngFor="let groupProducts of groupedProducts | async">
+      <ion-list-header>
+        {{groupProducts.group}}
+      </ion-list-header>
+      <ion-item-group>
+        <ion-item *ngFor="let product of groupProducts.products" class="product-item">
+          <ion-avatar slot="start">
+            <img [src]="product.image">
+          </ion-avatar>
+
+          <ion-label>
+            <h2>{{product.name}}</h2>
+            <p>{{product.price | currency: 'EUR'}}/u</p>
+          </ion-label>
+
+          <div slot="end" *ngIf="!isProductInOrder(product); then primaryBlock; else elseBlock"></div>
+          <ng-template #primaryBlock>
+            <ion-button size="default" shape="round" fill="outline" (click)="addToCart(product)">
+              <ion-icon name="add"></ion-icon>
+              {{'addToCart' | locale}}
+            </ion-button>
+          </ng-template>
+          <ng-template #elseBlock>
+
+            <ion-button size="default" shape="round" fill="outline" (click)="removeFromCart(product)"
+              class="button-no-text">
+              <ion-icon name="remove"></ion-icon>
+            </ion-button>
+
+            <ion-text class="quantity">
+              {{getProductInOrder(product).quantity}}
+            </ion-text>
+
+            <ion-button size="default" shape="round" fill="outline" (click)="addToCart(product)" class="button-no-text">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+
+          </ng-template>
+        </ion-item>
+      </ion-item-group>
+    </div>
+  </ion-list>
+</ion-content>
+
+<ion-footer class="create-order">
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col class="shopping-cart-col" [@addArticle]="total">
+        <img src="assets/imgs/shopping-cart.svg" id="shopping-cart">
+        <ion-icon id="add-circle" name="add-circle"></ion-icon>
+        <ion-icon id="remove-circle" name="remove-circle"></ion-icon>
+      </ion-col>
+      <ion-col>
+        {{'total' | locale}} {{total | currency: 'EUR'}}
+      </ion-col>
+      <ion-col>
+        <ion-button float-right (click)="onCreateOrder();$event.stopPropagation();" [disabled]="total == 0">
+          {{'okOrder' | locale}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

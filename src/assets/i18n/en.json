@@ -1,0 +1,17 @@
+{
+    "orders": "Orders",
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "ok": "OK",
+    "createOrder": "Create order",
+    "okOrder": "Checkout",
+    "addToCart": "Add to cart",
+    "total": "Total:",
+    "fail": "Error",
+    "remove": "Remove",
+    "confirm": "Confirm",
+    "accept": "Accept",
+    "cancel": "Cancel",
+    "removeOrderConfirm": "Are you sure you want to delete this order?"
+}

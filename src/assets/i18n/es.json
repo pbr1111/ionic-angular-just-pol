@@ -1,0 +1,17 @@
+{
+    "orders": "Pedidos",
+    "login": "Iniciar sesión",
+    "user": "Correo electrónico",
+    "password": "Contraseña",
+    "ok": "Aceptar",
+    "createOrder": "Crear pedido",
+    "okOrder": "Tramitar pedido",
+    "addToCart": "Añadir al carro",
+    "total": "Total:",
+    "fail": "Error",
+    "remove": "Eliminar",
+    "confirm": "Confirmar",
+    "accept": "Aceptar",
+    "cancel": "Cancelar",
+    "removeOrderConfirm": "Estás a punto de eliminar el pedido seleccionado. ¿Estás seguro?"
+}

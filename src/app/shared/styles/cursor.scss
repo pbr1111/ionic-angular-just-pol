@@ -1,0 +1,27 @@
+.custom-loading-cursor {
+
+    .loading-wrapper {
+        background: transparent;
+        box-shadow: initial;
+        -webkit-box-shadow: initial; 
+
+        ion-spinner {
+            height: 5rem;
+            width: 5rem;
+
+            circle {
+                stroke: white;
+            }
+        }
+    }
+}
+
+ion-app {
+    ion-loading {
+        opacity: initial !important;
+    }
+
+    ion-alert ~ ion-loading {
+        opacity: 0 !important;
+    }
+}

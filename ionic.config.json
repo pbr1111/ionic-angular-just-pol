@@ -1,5 +1,7 @@
 {
   "name": "JustPol",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
