@@ -25,16 +25,17 @@
           </ion-label>
 
           <div slot="end" class="card-buttons">
-            <ion-button shape="round" fill="outline" (click)="removeFromCart(product)"
-              *ngIf="isProductInOrder(product)">
+            <ion-button *ngIf="isProductInOrder(product)" shape="round" fill="outline" (click)="removeFromCart(product)"
+              (appPress)="removeFromCart(product)" [timeout]="250">
               <ion-icon name="remove"></ion-icon>
             </ion-button>
 
-            <ion-text class="quantity" *ngIf="isProductInOrder(product)">
+            <ion-text *ngIf="isProductInOrder(product)" class="quantity">
               {{getProductInOrder(product).quantity}}
             </ion-text>
 
-            <ion-button shape="round" fill="outline" (click)="addToCart(product)">
+            <ion-button shape="round" fill="outline" (click)="addToCart(product)" (appPress)="addToCart(product)"
+              [timeout]="250">
               <ion-icon name="add"></ion-icon>
             </ion-button>
           </div>

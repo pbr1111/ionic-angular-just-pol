@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CreateOrderPage } from './create-order.page';
 import { LocaleModule } from '../shared/modules/locale.module';
+import { SharedModule } from '../shared/modules/shared.module';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    LocaleModule
+    LocaleModule,
+    SharedModule
   ],
   declarations: [CreateOrderPage]
 })
