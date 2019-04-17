@@ -14,6 +14,7 @@ export class PressDirective {
 
     @HostListener('press')
     public onPress(): void {
+        this.stopInterval();
         this.startInterval();
     }
 
