@@ -7,21 +7,34 @@
     <ion-col></ion-col>
   </ion-row>
   <div class="login-box">
-    <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <form (ngSubmit)="login()" [formGroup]="loginForm" autocomplete="off">
       <ion-row>
         <ion-col>
-          <ion-input #emailInput type="text" placeholder="{{'email' | locale}}" formControlName="email"></ion-input>
+
+          <ion-item lines="none">
+            <ion-label position="floating">{{'email' | locale}}</ion-label>
+            <ion-input #emailInput type="text" name="email" formControlName="email" [autofocus]="true"
+              autocomplete="off"></ion-input>
+          </ion-item>
+
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-input type="password" placeholder="{{'password' | locale}}" name="password" formControlName="password">
-          </ion-input>
+          <ion-item lines="none">
+            <ion-label position="floating">{{'password' | locale}}</ion-label>
+            <ion-input type="password" name="password" name="password" formControlName="password"
+              (keyup.enter)="login()" autocomplete="off">
+            </ion-input>
+          </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="signup-col">
-          <ion-button expand="full" shape="round" size="large" type="submit" [disabled]="!loginForm.valid">{{'login' | locale}}</ion-button>
+          <ion-button shape="round" fill="outline" size="large" expand="full" type="submit"
+            [disabled]="!loginForm.valid">
+            {{'login' | locale}}
+          </ion-button>
         </ion-col>
       </ion-row>
     </form>

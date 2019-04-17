@@ -24,29 +24,21 @@
             <p>{{product.price | currency: 'EUR'}}/u</p>
           </ion-label>
 
-          <div slot="end" *ngIf="!isProductInOrder(product); then primaryBlock; else elseBlock"></div>
-          <ng-template #primaryBlock>
-            <ion-button size="default" shape="round" fill="outline" (click)="addToCart(product)">
-              <ion-icon name="add"></ion-icon>
-              {{'addToCart' | locale}}
-            </ion-button>
-          </ng-template>
-          <ng-template #elseBlock>
-
-            <ion-button size="default" shape="round" fill="outline" (click)="removeFromCart(product)"
-              class="button-no-text">
+          <div slot="end" class="card-buttons">
+            <ion-button shape="round" fill="outline" (click)="removeFromCart(product)"
+              *ngIf="isProductInOrder(product)">
               <ion-icon name="remove"></ion-icon>
             </ion-button>
 
-            <ion-text class="quantity">
+            <ion-text class="quantity" *ngIf="isProductInOrder(product)">
               {{getProductInOrder(product).quantity}}
             </ion-text>
 
-            <ion-button size="default" shape="round" fill="outline" (click)="addToCart(product)" class="button-no-text">
+            <ion-button shape="round" fill="outline" (click)="addToCart(product)">
               <ion-icon name="add"></ion-icon>
             </ion-button>
+          </div>
 
-          </ng-template>
         </ion-item>
       </ion-item-group>
     </div>

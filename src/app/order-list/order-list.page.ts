@@ -7,6 +7,7 @@ import { FirebaseService } from '../shared/services/firebase.service';
 import { map } from 'rxjs/operators';
 import { ArrayHelper } from '../shared/helpers/array.helper';
 import { LocaleService } from '../shared/services/locale.service';
+import { AuthenticationService } from '../shared/services/authentication.service';
 
 interface OrderSnapshot {
   key: string;
@@ -24,6 +25,7 @@ export class OrderListPage implements OnInit {
 
   constructor(private localeService: LocaleService,
     private pageService: PageService,
+    private authService: AuthenticationService,
     private firebase: FirebaseService) {
   }
 
@@ -51,5 +53,9 @@ export class OrderListPage implements OnInit {
 
   public removeOrder(order: OrderSnapshot): void {
     this.orderDBList.remove(order.key);
+  }
+
+  public logout(): void {
+    this.authService.logout().then(() => this.pageService.navigateToLogin());
   }
 }

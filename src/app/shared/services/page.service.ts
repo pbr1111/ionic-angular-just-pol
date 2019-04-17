@@ -43,6 +43,14 @@ export class PageService {
         });
     }
 
+    public navigateToRoot(): void {
+        this.router.navigate(['/']);
+    }
+
+    public navigateToLogin(): void {
+        this.router.navigate(['/login']);
+    }
+
     public navigateTo(page: string): void {
         this.router.navigate([page]);
     }

@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate } fro
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../shared/services/authentication.service';
 import { PageService } from '../shared/services/page.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,12 @@ export class AuthGuard implements CanActivate {
   }
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if (this.authService.isUserLoggedIn) {
-      return true;
-    }
-    else {
-      this.pageService.navigateTo('/login');
-      return false;
-    }
+    return this.authService.isUserLoggedIn.pipe(map(value => {
+      if(!value){
+        this.pageService.navigateTo('/login');
+      }
+      return value;
+    }));
   }
 
 }
