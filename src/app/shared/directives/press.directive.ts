@@ -7,7 +7,7 @@ import { Directive, HostListener, Input, Output, EventEmitter } from "@angular/c
 export class PressDirective {
     @Input() public timeout: number = 50;
     @Output() public appPress: EventEmitter<void> = new EventEmitter<void>();
-    private interval: NodeJS.Timeout = null;
+    private interval: any = null;
 
     constructor() {
     }
